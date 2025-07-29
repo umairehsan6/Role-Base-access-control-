@@ -40,5 +40,5 @@ wkhtmltopdf Restaurant_Management_Documentation.html Restaurant_Management_Docum
 - Security and best practices
 - Future enhancement roadmap
 
-Generated on: July 29, 2025 at 07:26 AM
+Generated on: July 29, 2025 at 07:45 AM
 Version: 1.0.0
