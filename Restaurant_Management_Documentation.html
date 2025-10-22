@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Django Restaurant Management System - Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #2980b9;
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+        
+        h4 {
+            color: #27ae60;
+            margin-top: 25px;
+            font-size: 1.2em;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        ul, ol {
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .toc {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .ascii-art {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        @media print {
+            body { font-size: 12px; }
+            h1 { page-break-before: always; }
+            h2 { page-break-before: auto; }
+            pre, .ascii-art { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: center; margin-bottom: 40px; border-bottom: 2px solid #3498db; padding-bottom: 20px;">
+        <h1 style="margin: 0; color: #2c3e50;">Django Restaurant Management System</h1>
+        <h2 style="margin: 10px 0; color: #7f8c8d; font-weight: normal;">Comprehensive Documentation</h2>
+        <p style="margin: 5px 0; color: #95a5a6;">Generated on: July 29, 2025 at 07:45 AM</p>
+        <p style="margin: 5px 0; color: #95a5a6;">Version: 1.0.0</p>
+    </div>
+    <p><h1>Django Restaurant Management System - Comprehensive Documentation</p>
+<p>#<h1>📋 Table of Contents
+1. [Project Overview](#project-overview)
+2. [Core Features](#core-features)
+3. [User Roles & Permissions](#user-roles--permissions)
+4. [System Architecture](#system-architecture)
+5. [Database Models](#database-models)
+6. [Frontend Interfaces](#frontend-interfaces)
+7. [Backend Implementation](#backend-implementation)
+8. [WebSocket Real-time Features](#websocket-real-time-features)
+9. [Installation & Setup](#installation--setup)
+10. [API Documentation](#api-documentation)
+11. [Security Features](#security-features)
+12. [Analytics & Reporting](#analytics--reporting)
+13. [Deployment Guide](#deployment-guide)
+14. [Feature Workflows](#feature-workflows)
+15. [Tech Stack](#tech-stack)</p>
+<p>---</p>
+<p>#<h1>🎯 Project Overview</p>
+<p>The Django Restaurant Management System is a comprehensive web application designed to streamline restaurant operations through role-based interfaces for waiters, kitchen staff, and administrators. The system provides real-time order management, inventory tracking, and detailed analytics.</p>
+<p>##<h1>Core Objectives
+- <strong>Efficiency</strong>: Streamline order-to-kitchen workflow
+- **Real-time Communication**: WebSocket-based live updates
+- **Inventory Management**: Automated stock tracking
+- **Analytics**: Data-driven insights for business decisions
+- **Security**: Local deployment with role-based access control</p>
+<p>---</p>
+<p>#<h1>🚀 Core Features</p>
+<p>##<h1>👨‍🍳 Waiter Interface
+- **Menu Management**: Browse dishes with preparation times and categories
+- **Table Assignment**: Select tables and specify guest count
+- **Order Placement**: Create orders with real-time status tracking
+- **Timer System**: 30-minute auto-reminders for order follow-up
+- **Kitchen Alerts**: Real-time notifications with sound and modal popups
+- **Payment Processing**: Calculate totals, change, and drawer management</p>
+<p>##<h1>🔪 Kitchen Interface
+- **Order Dashboard**: View all active orders across multiple screens
+- **Audio Notifications**: Sound alerts for new orders
+- **Status Management**: Update orders (Pending → In Progress → Completed)
+- **Collaborative Workflow**: All chefs can view and update any order
+- **Real-time Updates**: Live synchronization across all kitchen devices</p>
+<p>##<h1>🛠️ Admin Interface
+- **Inventory Management**: Add/edit ingredients and stock levels
+- **Unit Configuration**: Set measurement units (grams, liters, pieces)
+- **Automated Calculations**: Real-time inventory deduction post-order
+- **Sales Analytics**: Comprehensive reporting dashboard
+- **Daily Reports**: Automated earnings summaries
+- **AI Integration**: Weekly OpenAI LLM-powered business insights</p>
+<p>##<h1>📊 Dashboard / Counter Screen
+- **Order Queue**: Visual status tracking (Pending/In Progress/Completed)
+- **Real-time Monitoring**: Live order updates
+- **Financial Tracking**: End-of-day drawer balance calculations
+- **Performance Charts**: Dish popularity and sales metrics</p>
+<p>---</p>
+<p>#<h1>👥 User Roles & Permissions</p>
+<p>##<h1>🔐 Role-Based Access Control (RBAC)</p>
+<p>| Role | Permissions | Access Level |
+|------|-------------|--------------|
+| **Waiter** | Order management, table assignment, payment processing | Frontend interface, order creation |
+| **Chef** | Order status updates, kitchen notifications | Kitchen interface, order workflow |
+| **Admin** | Full system access, inventory, analytics, user management | All interfaces, system configuration |
+| **Manager** | Order oversight, basic analytics | Waiter + partial admin features |</p>
+<p>##<h1>Authentication Features
+- Secure login system with encrypted passwords
+- Session management with automatic timeout
+- Role-based route protection
+- Multi-device login support</p>
+<p>---</p>
+<p>#<h1>🏗️ System Architecture</p>
+<p>##<h1>High-Level Architecture
+</code></pre>
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  Frontend       │    │  Django Backend │    │  Database       │
+│  (React/Vue)    │◄──►│  + Channels     │◄──►│  PostgreSQL     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                        │                        │
+         │              ┌─────────────────┐               │
+         └──────────────►│  WebSocket      │◄──────────────┘
+                        │  (Real-time)    │
+                        └─────────────────┘
+</code></pre></p>
+<p>##<h1>Component Architecture
+- **Presentation Layer**: Role-specific dashboards and interfaces
+- **Business Logic Layer**: Django views, serializers, and business rules
+- **Data Access Layer**: Django ORM with optimized queries
+- **Real-time Layer**: Django Channels for WebSocket communication
+- **External Services**: OpenAI API for analytics insights</p>
+<p>---</p>
+<p>#<h1>🗃️ Database Models</p>
+<p>##<h1>Core Models Structure</p>
+<p><pre><code class="python"></h1>
+<h1>User Management
+class CustomUser(AbstractUser):
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    is_active_session = models.BooleanField(default=False)
+    last_activity = models.DateTimeField(auto_now=True)</p>
+<p><h1>Restaurant Structure
+class Table(models.Model):
+    table_number = models.IntegerField(unique=True)
+    capacity = models.IntegerField()
+    is_occupied = models.BooleanField(default=False)
+    current_order = models.ForeignKey('Order', null=True, blank=True)</p>
+<p><h1>Menu Management
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    is_active = models.BooleanField(default=True)</p>
+<p>class Dish(models.Model):
+    name = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    preparation_time = models.IntegerField()  <h1>minutes
+    description = models.TextField()
+    image = models.ImageField(upload_to='dishes/')
+    is_available = models.BooleanField(default=True)</p>
+<p><h1>Inventory System
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+    unit = models.CharField(max_length=50)  <h1>grams, liters, pieces
+    current_stock = models.DecimalField(max_digits=10, decimal_places=2)
+    minimum_stock = models.DecimalField(max_digits=10, decimal_places=2)
+    cost_per_unit = models.DecimalField(max_digits=10, decimal_places=2)</p>
+<p>class DishIngredient(models.Model):
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity_required = models.DecimalField(max_digits=10, decimal_places=2)</p>
+<p><h1>Order Management
+class Order(models.Model):
+    ORDER_STATUS = [
+        ('pending', 'Pending'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+    
+    order_number = models.CharField(max_length=20, unique=True)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    waiter = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    guest_count = models.IntegerField()
+    status = models.CharField(max_length=20, choices=ORDER_STATUS)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    estimated_completion = models.DateTimeField()
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    special_instructions = models.TextField(blank=True)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2)</p>
+<p><h1>Payment System
+class Payment(models.Model):
+    PAYMENT_METHODS = [
+        ('cash', 'Cash'),
+        ('card', 'Card'),
+        ('digital', 'Digital Wallet'),
+    ]
+    
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
+    amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
+    change_given = models.DecimalField(max_digits=10, decimal_places=2)
+    processed_at = models.DateTimeField(auto_now_add=True)
+    processed_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)</p>
+<p><h1>Analytics & Reporting
+class DailyReport(models.Model):
+    date = models.DateField(unique=True)
+    total_orders = models.IntegerField()
+    total_revenue = models.DecimalField(max_digits=10, decimal_places=2)
+    total_customers = models.IntegerField()
+    average_order_value = models.DecimalField(max_digits=10, decimal_places=2)
+    most_popular_dish = models.ForeignKey(Dish, on_delete=models.SET_NULL, null=True)
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🖥️ Frontend Interfaces</p>
+<p>##<h1>1. Waiter Interface Layout</p>
+<p>###<h1>Main Dashboard
+</code></pre>
+┌─────────────────────────────────────────────────────────┐
+│ 🍽️ Restaurant POS - Waiter: John Doe    🔔 [Alerts: 2] │
+├─────────────────────────────────────────────────────────┤
+│ Active Tables                     Quick Actions         │
+│ ┌─────┐ ┌─────┐ ┌─────┐          ┌─────────────────────┐ │
+│ │ T1  │ │ T2  │ │ T3  │          │ 🆕 New Order       │ │
+│ │ 4/4 │ │ 2/6 │ │ 0/2 │          │ 💰 Process Payment │ │
+│ │ 30m │ │ 15m │ │ --- │          │ 📋 View All Orders │ │
+│ └─────┘ └─────┘ └─────┘          └─────────────────────┘ │
+├─────────────────────────────────────────────────────────┤
+│ Current Orders                                          │
+│ Order #1234 | Table 1 | 🟡 In Progress | 25 min left   │
+│ Order #1235 | Table 2 | 🟢 Ready      | Serve now!     │
+└─────────────────────────────────────────────────────────┘
+</code></pre></p>
+<p>###<h1>Menu Interface
+</code></pre>
+┌─────────────────────────────────────────────────────────┐
+│ 📖 Menu - Table 3 (4 guests)                           │
+├─────────────────────────────────────────────────────────┤
+│ Categories: [Appetizers] [Main] [Desserts] [Beverages]  │
+├─────────────────────────────────────────────────────────┤
+│ 🍕 Margherita Pizza        $15.99    ⏱️ 20 min        │
+│    Fresh mozzarella, basil, tomato                     │
+│    [➕ Add to Order]                                   │
+│                                                         │
+│ 🍝 Pasta Carbonara         $18.99    ⏱️ 15 min        │
+│    Creamy sauce, bacon, parmesan                       │
+│    [➕ Add to Order]                                   │
+└─────────────────────────────────────────────────────────┘
+</code></pre></p>
+<p>##<h1>2. Kitchen Interface Layout</p>
+<p>###<h1>Order Dashboard
+</code></pre>
+┌─────────────────────────────────────────────────────────┐
+│ 👨‍🍳 Kitchen Dashboard - Chef: Maria Garcia              │
+├─────────────────────────────────────────────────────────┤
+│ 🆕 NEW ORDERS (3)      📋 IN PROGRESS (5)    ✅ READY (2) │
+├─────────────────────────────────────────────────────────┤
+│ Order #1240           │ Order #1238           │ Order #1236│
+│ Table: 5              │ Table: 2              │ Table: 1   │
+│ Guests: 2             │ Guests: 4             │ Guests: 3  │
+│ Time: Just now        │ Time: 12 min          │ Time: 28 min│
+│ ────────────────────  │ ────────────────────  │ ──────────│
+│ • 2x Burger          │ • 1x Pasta            │ • 3x Pizza │
+│ • 1x Salad           │ • 2x Steak            │ • 1x Salad │
+│ • 2x Coke            │ • 1x Wine             │            │
+│                       │                       │            │
+│ [🟡 Start Cooking]    │ [✅ Mark Complete]    │ [📞 Notify]│
+│ [❌ Cannot Make]      │ [⏸️ Pause]           │            │
+└─────────────────────────────────────────────────────────┘
+</code></pre></p>
+<p>##<h1>3. Admin Interface Layout</p>
+<p>###<h1>Main Dashboard
+</code></pre>
+┌─────────────────────────────────────────────────────────┐
+│ ⚙️ Admin Dashboard - Today's Overview                   │
+├─────────────────────────────────────────────────────────┤
+│ 📊 Today's Stats                                        │
+│ Revenue: $2,450.00  |  Orders: 87  |  Customers: 145   │
+│ Avg Order: $28.16   |  Peak Hour: 7-8 PM              │
+├─────────────────────────────────────────────────────────┤
+│ 📋 Quick Actions                                        │
+│ [👥 Manage Users] [🍽️ Menu Items] [📦 Inventory]       │
+│ [📈 Reports] [⚙️ Settings] [🔔 Notifications]          │
+├─────────────────────────────────────────────────────────┤
+│ ⚠️ Alerts                                               │
+│ • Low Stock: Tomatoes (5 kg remaining)                 │
+│ • Order #1241 taking longer than expected (45 min)    │
+│ • New user registration pending approval               │
+└─────────────────────────────────────────────────────────┘
+</code></pre></p>
+<p>###<h1>Inventory Management
+</code></pre>
+┌─────────────────────────────────────────────────────────┐
+│ 📦 Inventory Management                                 │
+├─────────────────────────────────────────────────────────┤
+│ Search: [ingredient name]  Filter: [🟢 In Stock] [🔍]  │
+├─────────────────────────────────────────────────────────┤
+│ Ingredient    | Current | Min | Unit  | Status | Action │
+│ Tomatoes      | 15.5 kg | 10  | kg    | 🟢 OK  | [Edit] │
+│ Flour         | 8.2 kg  | 15  | kg    | 🟡 Low | [Edit] │
+│ Mozzarella    | 3.1 kg  | 5   | kg    | 🔴 Low | [Edit] │
+│ Olive Oil     | 2.8 L   | 2   | L     | 🟢 OK  | [Edit] │
+├─────────────────────────────────────────────────────────┤
+│ [➕ Add New Ingredient] [📊 Usage Report] [🔄 Refresh] │
+└─────────────────────────────────────────────────────────┘
+</code></pre></p>
+<p>---</p>
+<p>#<h1>⚙️ Backend Implementation</p>
+<p>##<h1>Django Settings Configuration</p>
+<p><pre><code class="python"></h1>
+<h1>settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+    <h1>Third-party apps
+    'channels',
+    'rest_framework',
+    'corsheaders',
+    'django_filters',
+    
+    <h1>Local apps
+    'accounts',
+    'restaurant',
+    'orders',
+    'inventory',
+    'payments',
+    'analytics',
+]</p>
+<p><h1>Channels configuration
+ASGI_APPLICATION = 'restaurant_management.asgi.application'</p>
+<p>CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}</p>
+<p><h1>REST Framework configuration
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
+}
+</code></pre></p>
+<p>##<h1>URL Configuration</p>
+<p><pre><code class="python"></h1>
+<h1>urls.py
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static</p>
+<p>urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/auth/', include('accounts.urls')),
+    path('api/orders/', include('orders.urls')),
+    path('api/menu/', include('restaurant.urls')),
+    path('api/inventory/', include('inventory.urls')),
+    path('api/payments/', include('payments.urls')),
+    path('api/analytics/', include('analytics.urls')),
+    path('', include('frontend.urls')),  <h1>Serve React/Vue frontend
+]</p>
+<p>if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+</code></pre></p>
+<p>##<h1>Core Views and API Endpoints</p>
+<p><pre><code class="python"></h1>
+<h1>orders/views.py
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync</p>
+<p>class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    
+    def create(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            order = serializer.save(waiter=request.user)
+            
+            <h1>Update inventory
+            self.update_inventory(order)
+            
+            <h1>Send real-time notification to kitchen
+            self.notify_kitchen(order)
+            
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['post'])
+    def update_status(self, request, pk=None):
+        order = self.get_object()
+        new_status = request.data.get('status')
+        
+        if new_status in ['pending', 'in_progress', 'completed']:
+            order.status = new_status
+            order.save()
+            
+            <h1>Notify all relevant parties
+            self.broadcast_status_update(order)
+            
+            return Response({'status': 'updated'})
+        return Response({'error': 'Invalid status'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    def update_inventory(self, order):
+        for item in order.items.all():
+            dish_ingredients = DishIngredient.objects.filter(dish=item.dish)
+            for dish_ingredient in dish_ingredients:
+                ingredient = dish_ingredient.ingredient
+                required_quantity = dish_ingredient.quantity_required * item.quantity
+                ingredient.current_stock -= required_quantity
+                ingredient.save()
+    
+    def notify_kitchen(self, order):
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            'kitchen_orders',
+            {
+                'type': 'new_order',
+                'order': OrderSerializer(order).data
+            }
+        )
+    
+    def broadcast_status_update(self, order):
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            f'order_{order.id}',
+            {
+                'type': 'status_update',
+                'order': OrderSerializer(order).data
+            }
+        )
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🔄 WebSocket Real-time Features</p>
+<p>##<h1>Consumer Configuration</p>
+<p><pre><code class="python"></h1>
+<h1>consumers.py
+import json
+from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.db import database_sync_to_async
+from .models import Order, CustomUser</p>
+<p>class OrderConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.user = self.scope["user"]
+        
+        if self.user.role == 'chef':
+            self.group_name = 'kitchen_orders'
+        elif self.user.role == 'waiter':
+            self.group_name = f'waiter_{self.user.id}'
+        elif self.user.role == 'admin':
+            self.group_name = 'admin_dashboard'
+        
+        await self.channel_layer.group_add(
+            self.group_name,
+            self.channel_name
+        )
+        await self.accept()
+    
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            self.group_name,
+            self.channel_name
+        )
+    
+    async def receive(self, text_data):
+        data = json.loads(text_data)
+        message_type = data['type']
+        
+        if message_type == 'order_status_update':
+            await self.handle_status_update(data)
+        elif message_type == 'join_order_room':
+            await self.join_order_room(data['order_id'])
+    
+    async def new_order(self, event):
+        await self.send(text_data=json.dumps({
+            'type': 'new_order',
+            'order': event['order'],
+            'sound': True,  <h1>Trigger sound notification
+            'modal': True   <h1>Show modal popup
+        }))
+    
+    async def status_update(self, event):
+        await self.send(text_data=json.dumps({
+            'type': 'status_update',
+            'order': event['order']
+        }))
+    
+    async def handle_status_update(self, data):
+        order_id = data['order_id']
+        new_status = data['status']
+        
+        <h1>Update order status in database
+        await self.update_order_status(order_id, new_status)
+        
+        <h1>Broadcast to all relevant groups
+        await self.channel_layer.group_send(
+            f'order_{order_id}',
+            {
+                'type': 'status_update',
+                'order_id': order_id,
+                'status': new_status,
+                'updated_by': self.user.username
+            }
+        )
+    
+    @database_sync_to_async
+    def update_order_status(self, order_id, status):
+        try:
+            order = Order.objects.get(id=order_id)
+            order.status = status
+            order.save()
+            return True
+        except Order.DoesNotExist:
+            return False
+</code></pre></p>
+<p>##<h1>WebSocket Routing</p>
+<p><pre><code class="python"></h1>
+<h1>routing.py
+from django.urls import path
+from . import consumers</p>
+<p>websocket_urlpatterns = [
+    path('ws/orders/', consumers.OrderConsumer.as_asgi()),
+    path('ws/kitchen/', consumers.KitchenConsumer.as_asgi()),
+    path('ws/dashboard/', consumers.DashboardConsumer.as_asgi()),
+]
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🔧 Installation & Setup</p>
+<p>##<h1>Prerequisites
+- Python 3.9+
+- PostgreSQL 12+
+- Redis 6+
+- Node.js 16+ (for frontend)</p>
+<p>##<h1>Backend Setup</p>
+<p><pre><code class="bash"></h1>
+<h1>Clone repository
+git clone <repository-url>
+cd restaurant-management</p>
+<p><h1>Create virtual environment
+python -m venv venv
+source venv/bin/activate  <h1>On Windows: venv\Scripts\activate</p>
+<p><h1>Install dependencies
+pip install -r requirements.txt</p>
+<p><h1>Database setup
+createdb restaurant_management
+python manage.py makemigrations
+python manage.py migrate</p>
+<p><h1>Create superuser
+python manage.py createsuperuser</p>
+<p><h1>Load sample data
+python manage.py loaddata fixtures/sample_data.json</p>
+<p><h1>Run development server
+python manage.py runserver
+</code></pre></p>
+<p>##<h1>Frontend Setup</p>
+<p><pre><code class="bash"></h1>
+<h1>Navigate to frontend directory
+cd frontend</p>
+<p><h1>Install dependencies
+npm install</p>
+<p><h1>Start development server
+npm start
+</code></pre></p>
+<p>##<h1>Redis Setup</p>
+<p><pre><code class="bash"></h1>
+<h1>Install Redis (Ubuntu/Debian)
+sudo apt-get install redis-server</p>
+<p><h1>Start Redis service
+sudo systemctl start redis-server
+sudo systemctl enable redis-server</p>
+<p><h1>Verify Redis is running
+redis-cli ping  <h1>Should return PONG
+</code></pre></p>
+<p>##<h1>Requirements.txt</p>
+<p><pre><code class="txt">
+Django==4.2.7
+channels==4.0.0
+channels-redis==4.1.0
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+django-filter==23.3
+Pillow==10.0.1
+psycopg2-binary==2.9.7
+redis==5.0.1
+celery==5.3.4
+openai==1.3.0
+python-decouple==3.8
+gunicorn==21.2.0
+whitenoise==6.6.0
+</code></pre></p>
+<p>---</p>
+<p>#<h1>📡 API Documentation</p>
+<p>##<h1>Authentication Endpoints</p>
+<p><pre><code class="python"></h1>
+<h1>Authentication API
+POST /api/auth/login/
+{
+    "username": "waiter1",
+    "password": "password123"
+}
+Response: {
+    "token": "abc123...",
+    "user": {
+        "id": 1,
+        "username": "waiter1",
+        "role": "waiter",
+        "first_name": "John",
+        "last_name": "Doe"
+    }
+}</p>
+<p>POST /api/auth/logout/
+Headers: Authorization: Token abc123...
+Response: {"message": "Successfully logged out"}
+</code></pre></p>
+<p>##<h1>Order Management API</p>
+<p><pre><code class="python"></h1>
+<h1>Create Order
+POST /api/orders/
+{
+    "table": 3,
+    "guest_count": 4,
+    "items": [
+        {
+            "dish": 1,
+            "quantity": 2,
+            "special_instructions": "No onions"
+        },
+        {
+            "dish": 3,
+            "quantity": 1,
+            "special_instructions": ""
+        }
+    ]
+}</p>
+<p><h1>Get Orders
+GET /api/orders/
+Response: {
+    "count": 25,
+    "results": [
+        {
+            "id": 1,
+            "order_number": "ORD-001",
+            "table": 3,
+            "status": "pending",
+            "total_amount": "45.50",
+            "created_at": "2024-01-15T10:30:00Z",
+            "items": [...]
+        }
+    ]
+}</p>
+<p><h1>Update Order Status
+PATCH /api/orders/1/update_status/
+{
+    "status": "in_progress"
+}
+</code></pre></p>
+<p>##<h1>Menu API</p>
+<p><pre><code class="python"></h1>
+<h1>Get Menu Items
+GET /api/menu/dishes/
+Response: {
+    "results": [
+        {
+            "id": 1,
+            "name": "Margherita Pizza",
+            "category": "Main Course",
+            "price": "15.99",
+            "preparation_time": 20,
+            "description": "Fresh mozzarella, basil, tomato",
+            "image": "/media/dishes/pizza.jpg",
+            "is_available": true
+        }
+    ]
+}</p>
+<p><h1>Get Categories
+GET /api/menu/categories/
+Response: {
+    "results": [
+        {
+            "id": 1,
+            "name": "Appetizers",
+            "description": "Start your meal right"
+        }
+    ]
+}
+</code></pre></p>
+<p>##<h1>Inventory API</p>
+<p><pre><code class="python"></h1>
+<h1>Get Inventory
+GET /api/inventory/ingredients/
+Response: {
+    "results": [
+        {
+            "id": 1,
+            "name": "Tomatoes",
+            "current_stock": "15.50",
+            "minimum_stock": "10.00",
+            "unit": "kg",
+            "status": "in_stock"
+        }
+    ]
+}</p>
+<p><h1>Update Stock
+PATCH /api/inventory/ingredients/1/
+{
+    "current_stock": "20.00"
+}
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🔒 Security Features</p>
+<p>##<h1>Authentication & Authorization</p>
+<p><pre><code class="python"></h1>
+<h1>Custom permission classes
+class RoleBasedPermission(BasePermission):
+    def has_permission(self, request, view):
+        if not request.user.is_authenticated:
+            return False
+        
+        <h1>Define role-based access
+        role_permissions = {
+            'admin': ['GET', 'POST', 'PUT', 'DELETE'],
+            'manager': ['GET', 'POST', 'PUT'],
+            'waiter': ['GET', 'POST'],
+            'chef': ['GET', 'PUT']  <h1>Only status updates
+        }
+        
+        user_role = request.user.role
+        allowed_methods = role_permissions.get(user_role, [])
+        
+        return request.method in allowed_methods</p>
+<p><h1>Secure session configuration
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+</code></pre></p>
+<p>##<h1>Data Protection</p>
+<p><pre><code class="python"></h1>
+<h1>Sensitive data encryption
+from cryptography.fernet import Fernet</p>
+<p>class EncryptedField(models.CharField):
+    def __init__(self, *args, **kwargs):
+        self.cipher = Fernet(settings.ENCRYPTION_KEY)
+        super().__init__(*args, **kwargs)
+    
+    def from_db_value(self, value, expression, connection):
+        if value is None:
+            return value
+        return self.cipher.decrypt(value.encode()).decode()
+    
+    def to_python(self, value):
+        if isinstance(value, str):
+            return value
+        return self.cipher.decrypt(value.encode()).decode()
+    
+    def get_prep_value(self, value):
+        if value is None:
+            return value
+        return self.cipher.encrypt(value.encode()).decode()
+</code></pre></p>
+<p>##<h1>Security Headers</p>
+<p><pre><code class="python"></h1>
+<h1>middleware.py
+class SecurityHeadersMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+    
+    def __call__(self, request):
+        response = self.get_response(request)
+        
+        <h1>Add security headers
+        response['X-Content-Type-Options'] = 'nosniff'
+        response['X-Frame-Options'] = 'DENY'
+        response['X-XSS-Protection'] = '1; mode=block'
+        response['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+        
+        return response
+</code></pre></p>
+<p>---</p>
+<p>#<h1>📊 Analytics & Reporting</p>
+<p>##<h1>Daily Reports Generation</p>
+<p><pre><code class="python"></h1>
+<h1>analytics/tasks.py
+from celery import shared_task
+from django.utils import timezone
+from .models import DailyReport, Order, Payment</p>
+<p>@shared_task
+def generate_daily_report():
+    today = timezone.now().date()
+    
+    <h1>Calculate metrics
+    orders_today = Order.objects.filter(created_at__date=today)
+    total_orders = orders_today.count()
+    total_revenue = sum(order.total_amount for order in orders_today)
+    total_customers = sum(order.guest_count for order in orders_today)
+    
+    avg_order_value = total_revenue / total_orders if total_orders > 0 else 0
+    
+    <h1>Find most popular dish
+    from django.db.models import Count
+    popular_dish = OrderItem.objects.filter(
+        order__created_at__date=today
+    ).values('dish').annotate(
+        count=Count('dish')
+    ).order_by('-count').first()
+    
+    <h1>Create or update daily report
+    report, created = DailyReport.objects.get_or_create(
+        date=today,
+        defaults={
+            'total_orders': total_orders,
+            'total_revenue': total_revenue,
+            'total_customers': total_customers,
+            'average_order_value': avg_order_value,
+            'most_popular_dish_id': popular_dish['dish'] if popular_dish else None
+        }
+    )
+    
+    return f"Daily report generated for {today}"
+</code></pre></p>
+<p>##<h1>OpenAI Integration for Weekly Insights</p>
+<p><pre><code class="python"></h1>
+<h1>analytics/ai_insights.py
+import openai
+from django.conf import settings</p>
+<p>class AIInsightsGenerator:
+    def __init__(self):
+        openai.api_key = settings.OPENAI_API_KEY
+    
+    def generate_weekly_insights(self, weekly_data):
+        prompt = f"""
+        Analyze this restaurant's weekly performance data and provide insights:
+        
+        Week Summary:
+        - Total Revenue: ${weekly_data['revenue']}
+        - Total Orders: {weekly_data['orders']}
+        - Average Order Value: ${weekly_data['avg_order_value']}
+        - Most Popular Dishes: {weekly_data['popular_dishes']}
+        - Peak Hours: {weekly_data['peak_hours']}
+        - Inventory Usage: {weekly_data['inventory_usage']}
+        
+        Please provide:
+        1. Performance summary
+        2. Trends and patterns
+        3. Recommendations for improvement
+        4. Inventory optimization suggestions
+        5. Pricing strategy insights
+        """
+        
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a restaurant business analyst."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=1000,
+            temperature=0.7
+        )
+        
+        return response.choices[0].message.content
+</code></pre></p>
+<p>##<h1>Analytics Dashboard Views</p>
+<p><pre><code class="python"></h1>
+<h1>analytics/views.py
+class AnalyticsDashboardView(APIView):
+    permission_classes = [IsAuthenticated, IsAdminUser]
+    
+    def get(self, request):
+        <h1>Date range parameters
+        start_date = request.query_params.get('start_date', timezone.now().date() - timedelta(days=7))
+        end_date = request.query_params.get('end_date', timezone.now().date())
+        
+        <h1>Generate analytics data
+        analytics_data = {
+            'revenue_trend': self.get_revenue_trend(start_date, end_date),
+            'order_status_distribution': self.get_order_status_distribution(start_date, end_date),
+            'popular_dishes': self.get_popular_dishes(start_date, end_date),
+            'hourly_performance': self.get_hourly_performance(start_date, end_date),
+            'table_utilization': self.get_table_utilization(start_date, end_date),
+            'payment_methods': self.get_payment_method_distribution(start_date, end_date)
+        }
+        
+        return Response(analytics_data)
+    
+    def get_revenue_trend(self, start_date, end_date):
+        from django.db.models import Sum
+        from django.db.models.functions import TruncDate
+        
+        revenue_data = Order.objects.filter(
+            created_at__date__range=[start_date, end_date],
+            status='completed'
+        ).annotate(
+            date=TruncDate('created_at')
+        ).values('date').annotate(
+            revenue=Sum('total_amount')
+        ).order_by('date')
+        
+        return list(revenue_data)
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🚀 Deployment Guide</p>
+<p>##<h1>Production Configuration</p>
+<p><pre><code class="python"></h1>
+<h1>settings/production.py
+import os
+from .base import *</p>
+<p>DEBUG = False
+ALLOWED_HOSTS = ['your-domain.com', 'localhost']</p>
+<p><h1>Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
+}</p>
+<p><h1>Static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'</p>
+<p><h1>Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')</p>
+<p><h1>Celery configuration
+CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379')
+CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://localhost:6379')</p>
+<p><h1>Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/restaurant_management.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+</code></pre></p>
+<p>##<h1>Docker Configuration</p>
+<p><pre><code class="dockerfile"></h1>
+<h1>Dockerfile
+FROM python:3.9-slim</p>
+<p>WORKDIR /app</p>
+<p><h1>Install system dependencies
+RUN apt-get update && apt-get install -y \
+    postgresql-client \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*</p>
+<p><h1>Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt</p>
+<p><h1>Copy project
+COPY . .</p>
+<p><h1>Collect static files
+RUN python manage.py collectstatic --noinput</p>
+<p><h1>Expose port
+EXPOSE 8000</p>
+<p><h1>Run application
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "restaurant_management.wsgi:application"]
+</code></pre></p>
+<p>##<h1>Docker Compose</p>
+<p><pre><code class="yaml"></h1>
+<h1>docker-compose.yml
+version: '3.8'</p>
+<p>services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: restaurant_management
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data</p>
+<p>  redis:
+    image: redis:6-alpine</p>
+<p>  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - DB_HOST=db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./media:/app/media</p>
+<p>  worker:
+    build: .
+    command: celery -A restaurant_management worker -l info
+    environment:
+      - DEBUG=False
+      - DB_HOST=db
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis</p>
+<p>volumes:
+  postgres_data:
+</code></pre></p>
+<p>##<h1>Nginx Configuration</p>
+<p><pre><code class="nginx"></h1>
+<h1>/etc/nginx/sites-available/restaurant_management
+server {
+    listen 80;
+    server_name your-domain.com;</p>
+<p>    location /static/ {
+        alias /app/staticfiles/;
+    }</p>
+<p>    location /media/ {
+        alias /app/media/;
+    }</p>
+<p>    location /ws/ {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }</p>
+<p>    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🔄 Feature Workflows</p>
+<p>##<h1>1. Order Placement Workflow</p>
+<p></code></pre>
+[Waiter] Select Table → Choose Dishes → Review Order → Submit
+    ↓
+[System] Validate Inventory → Calculate Total → Generate Order Number
+    ↓
+[WebSocket] Notify Kitchen → Play Sound → Show Modal
+    ↓
+[Kitchen] View Order → Start Cooking → Update Status
+    ↓
+[System] Update Inventory → Notify Waiter → Update Dashboard
+    ↓
+[Waiter] Serve Order → Process Payment → Close Order
+</code></pre></p>
+<p>##<h1>2. Kitchen Order Management Workflow</p>
+<p></code></pre>
+[New Order] → [Sound Alert] → [Modal Popup] → [Chef Accepts]
+    ↓
+[Mark In Progress] → [Start Timer] → [Update All Screens]
+    ↓
+[Cooking Process] → [Status Updates] → [Real-time Sync]
+    ↓
+[Mark Complete] → [Notify Waiter] → [Ready for Service]
+</code></pre></p>
+<p>##<h1>3. Inventory Update Workflow</p>
+<p></code></pre>
+[Order Placed] → [Extract Ingredients] → [Calculate Usage]
+    ↓
+[Update Stock Levels] → [Check Minimums] → [Generate Alerts]
+    ↓
+[Low Stock Warning] → [Admin Notification] → [Reorder Process]
+</code></pre></p>
+<p>##<h1>4. Payment Processing Workflow</p>
+<p></code></pre>
+[Order Complete] → [Generate Bill] → [Choose Payment Method]
+    ↓
+[Calculate Change] → [Process Payment] → [Update Drawer]
+    ↓
+[Print Receipt] → [Update Analytics] → [Close Table]
+</code></pre></p>
+<p>---</p>
+<p>#<h1>🛠️ Tech Stack</p>
+<p>##<h1>Backend Technologies
+- **Framework**: Django 4.2.7
+- **Real-time**: Django Channels + WebSocket
+- **Database**: PostgreSQL 13+
+- **Cache/Message Broker**: Redis 6+
+- **Task Queue**: Celery
+- **API**: Django REST Framework
+- **Authentication**: Token-based + Session</p>
+<p>##<h1>Frontend Technologies
+- **Framework**: React 18+ / Vue 3+
+- **State Management**: Redux/Vuex
+- **UI Library**: Material-UI / Vuetify
+- **Real-time**: WebSocket Client
+- **Charts**: Chart.js / D3.js
+- **Notifications**: React-Toastify</p>
+<p>##<h1>DevOps & Deployment
+- **Containerization**: Docker + Docker Compose
+- **Web Server**: Nginx
+- **WSGI Server**: Gunicorn
+- **Process Manager**: Supervisor
+- **Monitoring**: Django Debug Toolbar (dev)
+- **Logging**: Django Logging Framework</p>
+<p>##<h1>External Services
+- **AI Insights**: OpenAI GPT-4 API
+- **Email**: Django Email Backend
+- **File Storage**: Local File System / AWS S3
+- **Backup**: PostgreSQL pg_dump</p>
+<p>---</p>
+<p>#<h1>📋 Implementation Checklist</p>
+<p>##<h1>Phase 1: Core Setup ✅
+- [ ] Django project initialization
+- [ ] Database models creation
+- [ ] Basic authentication system
+- [ ] REST API endpoints
+- [ ] Admin interface setup</p>
+<p>##<h1>Phase 2: Order Management ⚠️
+- [ ] Order creation and management
+- [ ] Table management system
+- [ ] Menu display and selection
+- [ ] Basic order status updates
+- [ ] Payment processing</p>
+<p>##<h1>Phase 3: Real-time Features 🔄
+- [ ] WebSocket implementation
+- [ ] Kitchen notification system
+- [ ] Real-time order updates
+- [ ] Sound alerts and modals
+- [ ] Live dashboard updates</p>
+<p>##<h1>Phase 4: Inventory System 📦
+- [ ] Ingredient management
+- [ ] Automatic stock calculations
+- [ ] Low stock alerts
+- [ ] Usage tracking
+- [ ] Reorder notifications</p>
+<p>##<h1>Phase 5: Analytics & Reporting 📊
+- [ ] Daily report generation
+- [ ] Sales analytics dashboard
+- [ ] Performance metrics
+- [ ] Chart implementations
+- [ ] OpenAI integration</p>
+<p>##<h1>Phase 6: Security & Optimization 🔒
+- [ ] Security headers implementation
+- [ ] Data encryption
+- [ ] Performance optimization
+- [ ] Error handling
+- [ ] Comprehensive testing</p>
+<p>##<h1>Phase 7: Deployment 🚀
+- [ ] Production configuration
+- [ ] Docker containerization
+- [ ] Nginx setup
+- [ ] SSL certificate
+- [ ] Monitoring and logging</p>
+<p>---</p>
+<p>#<h1>🎯 Future Enhancements</p>
+<p>##<h1>Advanced Features
+- **Mobile App**: React Native/Flutter companion app
+- **Voice Orders**: Speech-to-text order placement
+- **QR Code Menus**: Contactless menu access
+- **Multi-location**: Support for restaurant chains
+- **Advanced Analytics**: Machine learning predictions</p>
+<p>##<h1>Integration Possibilities
+- **POS Systems**: Integration with existing POS hardware
+- **Accounting Software**: QuickBooks/Xero integration
+- **Delivery Services**: UberEats/DoorDash API integration
+- **Loyalty Programs**: Customer rewards system
+- **Supplier Management**: Automated ordering system</p>
+<p>---</p>
+<p>#<h1>📞 Support & Maintenance</p>
+<p>##<h1>Development Guidelines
+- Follow PEP 8 for Python code style
+- Use ESLint for JavaScript/TypeScript
+- Implement comprehensive unit tests
+- Document all API endpoints
+- Regular security audits</p>
+<p>##<h1>Monitoring & Alerts
+- Server performance monitoring
+- Database query optimization
+- Real-time error tracking
+- Automated backup systems
+- Security vulnerability scanning</p>
+<p>##<h1>Backup Strategy
+- Daily database backups
+- Media file synchronization
+- Configuration backup
+- Disaster recovery plan
+- Regular restore testing</p>
+<p>---</p>
+<p>*This documentation provides a comprehensive overview of the Django Restaurant Management System. For specific implementation details, refer to the individual module documentation and API references.*</p>
+</body>
+</html>
